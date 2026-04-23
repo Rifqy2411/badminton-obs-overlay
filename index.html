@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badminton OBS Layout</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav class="">
+        <h1>Badminton OBS Overlay</h1>
+    </nav>
+    <div class="container centered">
+                
+        <div class="wrap-main centered">
+
+            <h1 class="wrap-main-separator centered">OVERLAY SET</h1>
+
+            <div class="box">
+                <h1 class="box-desc">Scoreboard</h1>
+                <div class="box-image">
+
+                </div>
+                <div class="box-button">
+                    <button onclick="copyText('localhost:5500/index.html')">Copy Localhost</button>
+                    <button onclick="copyText('IP',':5500/index.html')">Copy IP</button>
+                    <a href="overlay/scoreboard.html" target="_blank" rel="noopener noreferrer">Open in new Tab</a>
+                </div>
+            </div>
+            <div class="box">
+            </div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+
+            <h1 class="wrap-main-separator centered">CONTROL SET</h1>
+
+            <div class="box">
+                <h1 class="box-desc">Scoreboard Control</h1>
+                <div class="box-image">
+
+                </div>
+                <div class="box-button">
+                    <button onclick="copyText('localhost:5500/control/scoreboardcontrol.html')">Copy Localhost</button>
+                    <button onclick="copyText('IP',':5500/control/scoreboardcontrol.html')">Copy IP</button>
+                    <a href="control/scoreboardcontrol.html" target="_blank" rel="noopener noreferrer">Open in new Tab</a>
+                </div>
+            </div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(text,url) {
+
+            let IPAddress = "10.111.97.104";
+
+            //Validation
+            if (text == "IP") {
+
+                // Copy the text to clipboard
+                navigator.clipboard.writeText(IPAddress + url)
+                .then(() => alert("Copied: " + IPAddress + url))
+                .catch(err => console.error("Failed to copy: ", err));
+
+            } else {
+
+                // Copy the text to clipboard
+                navigator.clipboard.writeText(text)
+                .then(() => alert("Copied: " + text))
+                .catch(err => console.error("Failed to copy: ", err));
+
+            }
+
+        }
+
+        // Function to get local IP address using WebRTC
+        // async function getLocalIP() {
+        // return new Promise((resolve, reject) => {
+        //     // Check if WebRTC is supported
+        //     if (!window.RTCPeerConnection) {
+        //     reject("WebRTC is not supported in this browser.");
+        //     return;
+        //     }
+        
+        //     // Configure RTCPeerConnection (no STUN/TURN servers needed for local IP)
+        //     const pcConfig = { iceServers: [] }; // Empty array = use only local candidates
+        //     const pc = new RTCPeerConnection(pcConfig);
+        //     const localIPs = new Set(); // To store unique local IPs
+        
+        //     // Step 1: Create a dummy data channel to trigger ICE candidate generation
+        //     // Some browsers require a data channel to generate candidates
+        //     pc.createDataChannel("");
+        
+        //     // Step 2: Listen for ICE candidates
+        //     pc.onicecandidate = (event) => {
+        //     if (!event.candidate) {
+        //         // No more candidates; clean up and resolve
+        //         pc.close();
+        //         resolve(Array.from(localIPs)); // Return array of unique local IPs
+        //         return;
+        //     }
+        
+        //     // Extract IP from the candidate string
+        //     const candidate = event.candidate.candidate;
+        //     const ipRegex = /([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/;
+        //     const ipMatch = candidate.match(ipRegex);
+        
+        //     if (ipMatch && candidate.includes("typ host")) {
+        //         // Only keep "host" candidates (local IPs)
+        //         const ip = ipMatch[1];
+        //         localIPs.add(ip); // Avoid duplicates
+        //     }
+        //     };
+        
+        //     // Step 3: Handle errors
+        //     pc.onerror = (error) => {
+        //     reject(`WebRTC error: ${error.message}`);
+        //     pc.close();
+        //     };
+        
+        //     // Step 4: Create an offer to trigger candidate generation
+        //     pc.createOffer()
+        //     .then((offer) => pc.setLocalDescription(offer))
+        //     .catch((err) => reject(`Failed to create offer: ${err.message}`));
+        // });
+        // }
+        
+        // // Usage example
+        // getLocalIP()
+        // .then((ips) => {
+        //     console.log("Local IP Address(es):", ips);
+        //     // Display IPs to the user (e.g., in HTML)
+        //     document.getElementById("local-ip").textContent = ips.join(", ");
+        // })
+        // .catch((error) => {
+        //     console.error("Error getting local IP:", error);
+        // });
+
+    </script>
+</body>
+</html>

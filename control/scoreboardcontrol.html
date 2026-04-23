@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Control</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="wrap">
+
+            <div class="scoreboard-control">
+                <div class="control-playername" id="controlInputPlayername1">
+                    <label for="playername1">Playername 1</label>
+                    <input type="text" id="playername1" name="playername1"> 
+                    <button onclick="setplayername1(JSON.stringify(document.getElementById('playername1').value))">SET</button>
+                </div>
+                <div class="control-score"></div>
+            </div>
+            
+            <div class="scoreboard-control">
+                <div class="control-playername" id="controlInputPlayername2">
+                    <label for="playername2">Playername 2</label>
+                    <input type="text" id="playername2" name="playername2"> 
+                    <button onclick="setplayername2(JSON.stringify(document.getElementById('playername2').value))">SET</button>
+                </div>
+                <div class="control-score"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let playername1 = document.getElementById('playername1').value;
+
+        function setplayername1(name){
+
+            console.log(playername1);
+            console.log(localStorage.getItem('playername1'));
+            localStorage.setItem('playername1', name);
+
+        }
+
+        function setplayername2(name){
+
+            console.log(playername1);
+            console.log(localStorage.getItem('playername2'));
+            localStorage.setItem('playername2', name);
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="scoreboard.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="time-score">
+            <div class="tournament-logo">
+
+            </div>
+            <div class="stats">
+                <div class="player-score">
+                    <div class="playername" style="background-color: rgb(168, 203, 255);" id="scoreboardPlayer1"></div>
+                    <div class="score" id="scoreboardPlayer1Score"></div>
+                </div>
+                <div class="player-score">
+                    <div class="playername" style="background-color: rgb(255, 120, 120);" id="scoreboardPlayer2"></div>
+                    <div class="score" style="border-bottom-right-radius: 15px;" id="scoreboardPlayer2Score"></div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let playername1 = localStorage.getItem('playername1');
+        let playername2 = localStorage.getItem('playername2');
+
+        document.getElementById('scoreboardPlayer1').innerHTML = playername1;
+        document.getElementById('scoreboardPlayer2').innerHTML = playername2;
+
+    </script>
+</body>
+</html>
