@@ -30,11 +30,17 @@
 
     <script>
 
-        let playername1 = localStorage.getItem('playername1');
-        let playername2 = localStorage.getItem('playername2');
+    let playername1 = '';
+    let playername2 = '';
+    try {
+        playername1 = JSON.parse(localStorage.getItem('playername1')).name;
+    } catch (e) {}
+    try {
+        playername2 = JSON.parse(localStorage.getItem('playername2')).name;
+    } catch (e) {}
 
-        document.getElementById('scoreboardPlayer1').innerHTML = playername1;
-        document.getElementById('scoreboardPlayer2').innerHTML = playername2;
+    document.getElementById('scoreboardPlayer1').innerHTML = playername1 || '';
+    document.getElementById('scoreboardPlayer2').innerHTML = playername2 || '';
 
     </script>
 </body>

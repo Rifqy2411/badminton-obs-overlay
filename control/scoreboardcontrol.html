@@ -37,23 +37,43 @@
 
     <script>
 
-        let playername1 = document.getElementById('playername1').value;
+    // Populate input fields from localStorage (stored as JSON)
+    window.addEventListener('DOMContentLoaded', () => {
+    ['playername1', 'playername2'].forEach(id => {
+        const raw = localStorage.getItem(id);
+        if (!raw) return;
+            try {
+                const obj = JSON.parse(raw);
+                if (obj && obj.name) document.getElementById(id).value = obj.name;
+            } catch (e) {
+                document.getElementById(id).value = raw;
+            }
+        });
+    });
 
-        function setplayername1(name){
-
-            console.log(playername1);
-            console.log(localStorage.getItem('playername1'));
-            localStorage.setItem('playername1', name);
-
+    function parseMaybeJson(input) {
+    if (input == null) return '';
+        try {
+            const parsed = JSON.parse(input);
+            if (typeof parsed === 'string') return parsed;
+            if (parsed && parsed.name) return parsed.name;
+        } catch (e) {
+            // not JSON
         }
+    return input;
+    }
 
-        function setplayername2(name){
+    function setplayername1(name) {
+        const plain = parseMaybeJson(name);
+        localStorage.setItem('playername1', JSON.stringify({ name: plain }));
+        console.log('playername1 saved', plain);
+    }
 
-            console.log(playername1);
-            console.log(localStorage.getItem('playername2'));
-            localStorage.setItem('playername2', name);
-
-        }
+    function setplayername2(name) {
+        const plain = parseMaybeJson(name);
+        localStorage.setItem('playername2', JSON.stringify({ name: plain }));
+        console.log('playername2 saved', plain);
+    }
 
     </script>
 </body>
